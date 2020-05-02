@@ -1,14 +1,16 @@
-package com.dfco.restcliente.consultacliente.servicio.impl
+package com.dfco.restcliente.consultacliente.servicio
 
 import com.dfco.restcliente.consultacliente.modelo.PerfilCliente
 import com.dfco.restcliente.consultacliente.repositorio.RepositorioPerfilCliente
-import com.dfco.restcliente.consultacliente.servicio.vo.EventoClienteCreado
+import com.dfco.restcliente.consultacliente.servicio.impl.ServicioEventoClienteCreadoImpl
+import com.dfco.restcliente.consultacliente.vo.EventoClienteCreado
 import com.dfco.restcliente.consultacliente.shared.ConversorEventoToPerfilCliente
 import org.hamcrest.MatcherAssert
 import org.hamcrest.Matchers
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito
+import org.slf4j.Logger
 import java.time.LocalDate
 import java.util.*
 
@@ -44,16 +46,15 @@ internal class ServicioEventoClienteCreadoImplTest {
         //Given
         val mockRepository = Mockito.mock(RepositorioPerfilCliente::class.java)
         val conversorEventoToPerfilCliente = Mockito.mock(ConversorEventoToPerfilCliente::class.java)
-        Mockito.`when`(mockRepository.save(perfil)).thenReturn(id)
+        val logger = Mockito.mock(Logger::class.java)
+        Mockito.`when`(mockRepository.save(perfil)).thenReturn(perfil)
         Mockito.`when`(conversorEventoToPerfilCliente.convert(eventoClienteCreado)).thenReturn(perfil)
-        val sut = ServicioEventoClienteCreadoImpl(mockRepository, conversorEventoToPerfilCliente)
+        val sut = ServicioEventoClienteCreadoImpl(mockRepository, conversorEventoToPerfilCliente,logger)
 
         // When
-        val result = sut.registrar(eventoClienteCreado)
+        sut.registrar(eventoClienteCreado)
 
         // Then
-        MatcherAssert.assertThat(result, Matchers.`is`(id))
         Mockito.verify(mockRepository).save(perfil)
-        MatcherAssert.assertThat(mockRepository.save(perfil), Matchers.`is`(id))
     }
 }

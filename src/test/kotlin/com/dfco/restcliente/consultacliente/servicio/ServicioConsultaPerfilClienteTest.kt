@@ -3,7 +3,7 @@ package com.dfco.restcliente.consultacliente.servicio
 import com.dfco.restcliente.consultacliente.modelo.PerfilCliente
 import com.dfco.restcliente.consultacliente.repositorio.RepositorioPerfilCliente
 import com.dfco.restcliente.consultacliente.servicio.impl.ServicioConsultaPerfilClienteImpl
-import com.dfco.restcliente.consultacliente.servicio.vo.RespuestaPerfilCliente
+import com.dfco.restcliente.consultacliente.vo.RespuestaPerfilCliente
 import com.dfco.restcliente.consultacliente.shared.ConversorPerfilCliente
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
@@ -45,7 +45,7 @@ internal class ServicioConsultaPerfilClienteTest {
         // Given
         val mockRepository = Mockito.mock(RepositorioPerfilCliente::class.java)
         val conversorPerfilCliente = Mockito.mock(ConversorPerfilCliente::class.java)
-        Mockito.`when`(mockRepository.findById(id)).thenReturn(perfil)
+        Mockito.`when`(mockRepository.findById(id)).thenReturn(Optional.of(perfil))
         Mockito.`when`(conversorPerfilCliente.convert(perfil)).thenReturn(respuestaPerfilCliente)
         val sut = ServicioConsultaPerfilClienteImpl(mockRepository, conversorPerfilCliente)
 

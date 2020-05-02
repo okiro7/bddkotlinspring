@@ -1,6 +1,6 @@
 package com.dfco.restcliente.consultacliente.servicio
 
-import com.dfco.restcliente.consultacliente.servicio.vo.RespuestaPerfilCliente
+import com.dfco.restcliente.consultacliente.vo.RespuestaPerfilCliente
 import java.util.*
 
 interface ServicioConsultaPerfilCliente {

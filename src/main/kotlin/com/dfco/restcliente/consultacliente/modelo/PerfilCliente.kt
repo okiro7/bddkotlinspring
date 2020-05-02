@@ -2,13 +2,16 @@ package com.dfco.restcliente.consultacliente.modelo
 
 import java.time.LocalDate
 import java.util.*
+import javax.persistence.Entity
+import javax.persistence.Id
 
-class PerfilCliente(
-    val id: UUID?,
-    val nombre: String?,
-    val fechaNacimiento: LocalDate?,
-    val email: String?,
-    val telefono: String?) {
+@Entity
+data class PerfilCliente constructor(
+        @Id val id: UUID? = null,
+        val nombre: String? = null,
+        val fechaNacimiento: LocalDate? = null,
+        val email: String? = null,
+        val telefono: String? = null){
 
         data class Builder(
                 var id: UUID? = null,

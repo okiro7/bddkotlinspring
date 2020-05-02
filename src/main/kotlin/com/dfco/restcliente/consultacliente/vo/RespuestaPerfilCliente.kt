@@ -1,4 +1,4 @@
-package com.dfco.restcliente.consultacliente.servicio.vo
+package com.dfco.restcliente.consultacliente.vo
 
 import java.time.LocalDate
 import java.util.*
