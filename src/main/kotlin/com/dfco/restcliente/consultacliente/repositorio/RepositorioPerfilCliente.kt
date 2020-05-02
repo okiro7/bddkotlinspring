@@ -7,4 +7,5 @@ import java.util.*
 @Repository
 interface RepositorioPerfilCliente {
     fun findById(id: UUID): PerfilCliente
+    fun save(perfilCliente: PerfilCliente):UUID
 }

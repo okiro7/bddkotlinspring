@@ -1,4 +1,4 @@
-package com.dfco.restcliente.consultacliente
+package com.dfco.restcliente.consultacliente.shared
 
 import com.dfco.restcliente.consultacliente.modelo.PerfilCliente
 import com.dfco.restcliente.consultacliente.servicio.vo.RespuestaPerfilCliente

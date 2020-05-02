@@ -1,12 +1,11 @@
 package com.dfco.restcliente.consultacliente.servicio.impl
 
-import com.dfco.restcliente.consultacliente.ConversorPerfilCliente
+import com.dfco.restcliente.consultacliente.shared.ConversorPerfilCliente
 import com.dfco.restcliente.consultacliente.repositorio.RepositorioPerfilCliente
 import com.dfco.restcliente.consultacliente.servicio.ServicioConsultaPerfilCliente
 import com.dfco.restcliente.consultacliente.servicio.vo.RespuestaPerfilCliente
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import java.time.LocalDate
 import java.util.*
 
 @Service
