@@ -1,19 +1,19 @@
 package com.dfco.restcliente.consultacliente.servicio.impl
 
+import com.dfco.restcliente.consultacliente.ConversorPerfilCliente
+import com.dfco.restcliente.consultacliente.repositorio.RepositorioPerfilCliente
 import com.dfco.restcliente.consultacliente.servicio.ServicioConsultaPerfilCliente
 import com.dfco.restcliente.consultacliente.servicio.vo.RespuestaPerfilCliente
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Service
 import java.time.LocalDate
 import java.util.*
 
+@Service
+class ServicioConsultaPerfilClienteImpl (@Autowired val repositorioPerfilCliente: RepositorioPerfilCliente , @Autowired val conversor : ConversorPerfilCliente) : ServicioConsultaPerfilCliente {
 
-class ServicioConsultaPerfilClienteImpl : ServicioConsultaPerfilCliente {
     override fun consultar(idCliente: UUID): RespuestaPerfilCliente {
-        return RespuestaPerfilCliente.Builder()
-                .id(idCliente)
-                .nombre("David")
-                .fechaNacimiento(LocalDate.of(1976, 2, 28))
-                .email("dgarciagil@autentia.com")
-                .telefono("+34 123456789")
-                .build()
+        val perfilCliente = repositorioPerfilCliente.findById(idCliente)
+        return conversor.convert(perfilCliente);
     }
 }

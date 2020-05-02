@@ -1,42 +1,73 @@
 package com.dfco.restcliente.consultacliente.servicio
 
+import com.dfco.restcliente.consultacliente.ConversorPerfilCliente
+import com.dfco.restcliente.consultacliente.modelo.PerfilCliente
+import com.dfco.restcliente.consultacliente.repositorio.RepositorioPerfilCliente
 import com.dfco.restcliente.consultacliente.servicio.impl.ServicioConsultaPerfilClienteImpl
 import com.dfco.restcliente.consultacliente.servicio.vo.RespuestaPerfilCliente
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.*
-import org.junit.Before
 import org.junit.Test
-import org.mockito.InjectMocks
-import org.mockito.MockitoAnnotations
+import org.mockito.ArgumentCaptor
+import org.mockito.Mockito
+import org.mockito.Mockito.verify
 import java.time.LocalDate
-import java.util.*
+import java.util.UUID
 
 
+/*@RunWith(SpringRunner::class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_CLASS)*/
 class ServicioConsultaPerfilClienteTest{
 
-    @InjectMocks
-    private lateinit var sut: ServicioConsultaPerfilClienteImpl
+   // @InjectMocks
+    //private lateinit var sut: ServicioConsultaPerfilClienteImpl
 
-    @Before
+   // @Mock
+   // private lateinit var mockRepository: RepositorioPerfilCliente
+
+    //@Mock
+   // private lateinit var mockConversor: ConversorPerfilCliente
+
+    /*@Before
     fun before() {
         MockitoAnnotations.initMocks(this)
-    }
-
+    }*/
 
     @Test
     fun dadoIdClienteExistenteEntoncesDevuelvePerfilCliente() {
+
         // Given
         val id = UUID.randomUUID()
+        val perfil: PerfilCliente = PerfilCliente.Builder()
+                .id(id)
+                .nombre("David")
+                .fechaNacimiento(LocalDate.of(1976, 2, 28))
+                .email("dgarciagil@autentia.com")
+                .telefono("+34 123456789")
+                .build()
+
+        val respuestaPerfilCliente: RespuestaPerfilCliente = RespuestaPerfilCliente.Builder()
+                .id(id)
+                .nombre("David")
+                .fechaNacimiento(LocalDate.of(1976, 2, 28))
+                .email("dgarciagil@autentia.com")
+                .telefono("+34 123456789")
+                .build()
+        val mockRepository = Mockito.mock(RepositorioPerfilCliente::class.java)
+        val conversorPerfilCliente = Mockito.mock(ConversorPerfilCliente::class.java)
+        Mockito.`when`(mockRepository.findById(id)).thenReturn(perfil)
+        Mockito.`when`(conversorPerfilCliente.convert(perfil)).thenReturn(respuestaPerfilCliente)
+
+
+        val sut = ServicioConsultaPerfilClienteImpl(mockRepository,conversorPerfilCliente)
+
 
         // When
         val result: RespuestaPerfilCliente = sut.consultar(id)
 
         // Then
-        assertThat(result, `is`(not(nullValue())))
-        assertThat(result.id, `is`(id))
-        assertThat(result.nombre, `is`("David"))
-        assertThat(result.fechaNacimiento, `is`(LocalDate.of(1976, 2, 28)))
-        assertThat(result.email, `is`("dgarciagil@autentia.com"))
-        assertThat(result.telefono, `is`("+34 123456789"))
+        verify(mockRepository).findById(perfil.id!!)
+        assertThat(perfil.id, `is`(id))
     }
 }
