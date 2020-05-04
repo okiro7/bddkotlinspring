@@ -3,10 +3,8 @@ package com.dfco.restcliente.consultacliente.servicio
 import com.dfco.restcliente.consultacliente.modelo.PerfilCliente
 import com.dfco.restcliente.consultacliente.repositorio.RepositorioPerfilCliente
 import com.dfco.restcliente.consultacliente.servicio.impl.ServicioEventoClienteCreadoImpl
-import com.dfco.restcliente.consultacliente.vo.EventoClienteCreado
+import com.dfco.restcliente.consultacliente.evento.EventoClienteCreado
 import com.dfco.restcliente.consultacliente.shared.ConversorEventoToPerfilCliente
-import org.hamcrest.MatcherAssert
-import org.hamcrest.Matchers
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito

@@ -1,7 +1,7 @@
 package com.dfco.restcliente.consultacliente.shared
 
 import com.dfco.restcliente.consultacliente.modelo.PerfilCliente
-import com.dfco.restcliente.consultacliente.vo.EventoClienteCreado
+import com.dfco.restcliente.consultacliente.evento.EventoClienteCreado
 import org.springframework.core.convert.converter.Converter
 import org.springframework.stereotype.Service
 

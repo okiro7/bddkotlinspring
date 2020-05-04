@@ -1,4 +1,4 @@
-package com.dfco.restcliente.consultacliente.vo
+package com.dfco.restcliente.consultacliente.evento
 
 import java.time.LocalDate
 import java.util.*
@@ -22,6 +22,6 @@ class EventoClienteCreado(
         fun fechaNacimiento(fechaNacimiento: LocalDate) = apply { this.fechaNacimiento = fechaNacimiento }
         fun email(email: String) = apply { this.email = email }
         fun telefono(telefono: String) = apply { this.telefono = telefono }
-        fun build() = EventoClienteCreado(id, nombre, fechaNacimiento, email,telefono)
+        fun build() = EventoClienteCreado(id, nombre, fechaNacimiento, email, telefono)
     }
 }

@@ -3,7 +3,7 @@ package com.dfco.restcliente.consultacliente.servicio.impl
 import com.dfco.restcliente.consultacliente.repositorio.RepositorioPerfilCliente
 import com.dfco.restcliente.consultacliente.servicio.ServicioEventoClienteCreado
 import com.dfco.restcliente.consultacliente.shared.ConversorEventoToPerfilCliente
-import com.dfco.restcliente.consultacliente.vo.EventoClienteCreado
+import com.dfco.restcliente.consultacliente.evento.EventoClienteCreado
 import org.slf4j.Logger
 import org.springframework.beans.factory.annotation.Autowired
 

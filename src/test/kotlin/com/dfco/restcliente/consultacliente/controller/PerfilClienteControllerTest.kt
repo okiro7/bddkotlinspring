@@ -46,12 +46,14 @@ class PerfilClienteControllerTest {
 
     @Test
     fun dadoIdClienteExistenteEntoncesDevuelvePerfilCliente() {
+
         // Given
         doReturn(respuestaPerfilCliente).`when`(servicio).consultar(id)
+
         // When
         val result = restTemplate.getForEntity("/cliente/perfil/{id}", RespuestaPerfilCliente::class.java, id)
-        // Then
 
+        // Then
         assertThat(result.getStatusCode(), `is`(HttpStatus.OK))
         val respuesta: RespuestaPerfilCliente? = result.getBody()
         assertThat(respuesta?.id, `is`(id))

@@ -1,7 +1,6 @@
 package com.dfco.restcliente.consultacliente.servicio
 
-import com.dfco.restcliente.consultacliente.vo.EventoClienteCreado
-import java.util.*
+import com.dfco.restcliente.consultacliente.evento.EventoClienteCreado
 
 interface ServicioEventoClienteCreado {
     fun registrar(evento : EventoClienteCreado)
