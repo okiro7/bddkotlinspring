@@ -47,7 +47,7 @@ internal class ServicioEventoClienteCreadoImplTest {
         val logger = Mockito.mock(Logger::class.java)
         Mockito.`when`(mockRepository.save(perfil)).thenReturn(perfil)
         Mockito.`when`(conversorEventoToPerfilCliente.convert(eventoClienteCreado)).thenReturn(perfil)
-        val sut = ServicioEventoClienteCreadoImpl(mockRepository, conversorEventoToPerfilCliente,logger)
+        val sut = ServicioEventoClienteCreadoImpl(mockRepository, conversorEventoToPerfilCliente)
 
         // When
         sut.registrar(eventoClienteCreado)
